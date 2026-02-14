@@ -1,5 +1,3 @@
-# Count lines of code, comments, and blanks grouped by extension.
-# Pipe file paths into it: `git ls-files | lines | loc`
 module loc {
     # Parse a single file and return its extension and line counts.
     # Tracks block comments (/* */, {- -}, <!-- -->) and line comments (#, //, --)
@@ -60,7 +58,11 @@ module loc {
         }
     }
 
-    export def main [--top (-t): int] {
+    # Count lines of code, comments, and blanks grouped by file extension
+    # Pipe file paths into it: `git ls-files | lines | loc`
+    export def main [
+        --top (-t): int # show only the top N extensions
+    ] {
         let input = $in
         if ($input == null) or ($input | is-empty) {
             error make { msg: "pipe a list of file paths into loc (e.g. `git ls-files | lines | loc`)" }

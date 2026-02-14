@@ -5,7 +5,7 @@ Random useful Nushell scripts.
 ## Install
 
 ```nu
-mkdir ($nu.data-dir | path join "vendor/autoload/oizys")
+mkdir ($nu.data-dir | path join "vendor/autoload")
 ```
 
 ## Scripts
@@ -16,7 +16,7 @@ Lines of code counter. Counts code, comments, and blanks grouped by file extensi
 
 ```nu
 http get https://raw.githubusercontent.com/syzio/nu/main/loc.nu
-    | save --force ($nu.data-dir | path join "vendor/autoload/oizys/loc.nu")
+    | save --force ($nu.data-dir | path join "vendor/autoload/oizys.loc.nu")
 ```
 
 Pipe file paths into it:
